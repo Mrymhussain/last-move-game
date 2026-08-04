@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Last Move</title>
 
   <link rel="stylesheet" href="./css/style.css">
@@ -12,26 +14,104 @@
 </head>
 
 <body>
-  <h1>Last Move</h1>
 
-  <p>Reach the flag before you run out of moves.</p>
+  <main>
 
-  <p id="moves"></p>
+    <h1>❄️ Last Move ❄️</h1>
 
-  <div id="game-board"></div>
+    <h2>Penguin Escape</h2>
 
-  <div id="controls">
-    <button data-direction="up">↑</button>
+    <p class="instructions">
+      Help the penguin reach home before the moves run out.
+    </p>
 
-    <div>
-      <button data-direction="left">←</button>
-      <button data-direction="down">↓</button>
-      <button data-direction="right">→</button>
+    <p class="instructions">
+      🐧 Penguin &nbsp;
+      🧊 Ice &nbsp;
+      ❌ Blocked &nbsp;
+      🏠 Home
+    </p>
+
+    <p class="instructions">
+      You have 10 moves. Choose your path carefully!
+    </p>
+
+
+    <p id="moves"></p>
+
+
+    <div id="game-board"></div>
+
+
+    <div id="controls">
+
+      <button
+        type="button"
+        data-direction="up"
+        aria-label="Move up"
+      >
+        ↑
+      </button>
+
+      <div>
+
+        <button
+          type="button"
+          data-direction="left"
+          aria-label="Move left"
+        >
+          ←
+        </button>
+
+        <button
+          type="button"
+          data-direction="down"
+          aria-label="Move down"
+        >
+          ↓
+        </button>
+
+        <button
+          type="button"
+          data-direction="right"
+          aria-label="Move right"
+        >
+          →
+        </button>
+
+      </div>
+
     </div>
-  </div>
 
-  <p id="message"></p>
 
-  <button id="restart-btn">Restart</button>
+    <p class="keyboard-text">
+      You can also use your keyboard arrow keys.
+    </p>
+
+
+    <p id="message"></p>
+
+
+    <div id="game-buttons">
+
+      <button
+        type="button"
+        id="start-btn"
+      >
+        Start Game
+      </button>
+
+      <button
+        type="button"
+        id="restart-btn"
+      >
+        New Puzzle
+      </button>
+
+    </div>
+
+  </main>
+
 </body>
+
 </html>
