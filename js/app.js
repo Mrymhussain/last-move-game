@@ -1,14 +1,19 @@
 /*-------------- Constants -------------*/
 
-const MAX_MOVES = 10;
+const TOTAL_LEVELS = LEVELS.length;
+const NUMBER_OF_TRAPS = 4;
+
 
 /*---------- Variables (state) ---------*/
 
+let level;
+let currentLevel;
 let board;
 let player;
 let movesLeft;
 let gameOver;
 let gameStarted;
+let levelComplete;
 let message;
 
 
@@ -21,32 +26,90 @@ const controlsEl = document.querySelector("#controls");
 const startBtnEl = document.querySelector("#start-btn");
 const restartBtnEl = document.querySelector("#restart-btn");
 
+const levelLabelEl = document.querySelector(".level-label");
+const levelNameEl = document.querySelector(".game-header h2");
+
 
 /*-------------- Functions -------------*/
 
 const init = () => {
-  let newBoard =
-    BOARDS[Math.floor(Math.random() * BOARDS.length)];
+  level = 0;
 
-  while (newBoard === board && BOARDS.length > 1) {
-    newBoard =
-      BOARDS[Math.floor(Math.random() * BOARDS.length)];
+  loadLevel();
+};
+
+
+const loadLevel = () => {
+  currentLevel = LEVELS[level];
+
+  board = currentLevel.board.map((row) => {
+    return row.slice();
+  });
+
+
+  if (level === 1) {
+    addRandomTraps();
   }
 
-  board = newBoard;
 
   player = {
     row: 4,
     col: 0
   };
 
-  movesLeft = MAX_MOVES;
+
+  movesLeft = currentLevel.moves;
+
   gameOver = false;
   gameStarted = false;
+  levelComplete = false;
 
   message = "Press Start Game to begin!";
 
+  document.body.className = currentLevel.theme;
+
+  restartBtnEl.textContent = "Restart Level";
+
   render();
+};
+
+
+const addRandomTraps = () => {
+
+  const trapSpaces = [
+    [4, 4],
+    [3, 4],
+    [3, 3],
+    [2, 4],
+    [1, 3],
+    [1, 2],
+    [0, 2],
+    [0, 1]
+  ];
+
+
+  let trapsAdded = 0;
+
+
+  while (trapsAdded < NUMBER_OF_TRAPS) {
+
+    const randomIndex =
+      Math.floor(Math.random() * trapSpaces.length);
+
+    const randomSpace =
+      trapSpaces[randomIndex];
+
+    const row = randomSpace[0];
+    const col = randomSpace[1];
+
+
+    if (board[row][col] === "ice") {
+
+      board[row][col] = "trap";
+
+      trapsAdded += 1;
+    }
+  }
 };
 
 
@@ -54,59 +117,172 @@ const render = () => {
   renderBoard();
   renderMoves();
   renderMessage();
+  renderLevel();
 
   startBtnEl.disabled = gameStarted;
+};
+
+
+const renderLevel = () => {
+  levelLabelEl.textContent =
+    `LEVEL ${level + 1}`;
+
+  levelNameEl.textContent =
+    currentLevel.name;
 };
 
 
 const renderBoard = () => {
   gameBoardEl.innerHTML = "";
 
+
   board.forEach((row, rowIndex) => {
 
-    row.forEach((tile, colIndex) => {
+    row.forEach((space, colIndex) => {
 
-      const tileEl = document.createElement("div");
+      const spaceEl =
+        document.createElement("div");
 
-      tileEl.classList.add("tile");
+      spaceEl.classList.add("tile");
 
 
       if (
         player.row === rowIndex &&
+        player.col === colIndex &&
+        space === "broken"
+      ) {
+
+        const grinchImg =
+          document.createElement("img");
+
+        grinchImg.src =
+          "./grinch.gif";
+
+        grinchImg.alt =
+          "Grinch";
+
+        grinchImg.classList.add(
+          "grinch-img"
+        );
+
+        spaceEl.appendChild(
+          grinchImg
+        );
+
+        spaceEl.classList.add(
+          "broken"
+        );
+
+
+      } else if (
+        player.row === rowIndex &&
         player.col === colIndex
       ) {
 
-        tileEl.textContent = "🐧";
-        tileEl.classList.add("player");
+        if (level === 1) {
+
+          spaceEl.textContent = "🎅";
+
+        } else {
+
+          spaceEl.textContent = "🐧";
+        }
+
+        spaceEl.classList.add(
+          "player"
+        );
 
 
-      } else if (tile === "blocked") {
+      } else if (
+        space === "blocked"
+      ) {
 
-        tileEl.textContent = "❌";
-        tileEl.classList.add("blocked");
+        if (level === 1) {
+
+          spaceEl.textContent = "🎄";
+
+        } else {
+
+          spaceEl.textContent = "❌";
+        }
+
+        spaceEl.classList.add(
+          "blocked"
+        );
 
 
-      } else if (tile === "goal") {
+      } else if (
+        space === "broken"
+      ) {
 
-        tileEl.textContent = "🏠";
-        tileEl.classList.add("goal");
+        const grinchImg =
+          document.createElement("img");
+
+        grinchImg.src =
+          "./grinch.gif";
+
+        grinchImg.alt =
+          "Grinch";
+
+        grinchImg.classList.add(
+          "grinch-img"
+        );
+
+        spaceEl.appendChild(
+          grinchImg
+        );
+
+        spaceEl.classList.add(
+          "broken"
+        );
+
+
+      } else if (
+        space === "goal"
+      ) {
+
+        if (level === 1) {
+
+          spaceEl.textContent = "🎁";
+
+        } else {
+
+          spaceEl.textContent = "🏠";
+        }
+
+        spaceEl.classList.add(
+          "goal"
+        );
 
 
       } else {
 
-        tileEl.textContent = "🧊";
-        tileEl.classList.add("ice");
+        if (level === 1) {
+
+          spaceEl.textContent = "❄️";
+
+        } else {
+
+          spaceEl.textContent = "🧊";
+        }
+
+        spaceEl.classList.add(
+          "ice"
+        );
       }
 
 
-      gameBoardEl.appendChild(tileEl);
+      gameBoardEl.appendChild(
+        spaceEl
+      );
     });
   });
 };
 
 
 const renderMoves = () => {
-  movesEl.textContent = `Moves Left: ${movesLeft}`;
+  movesEl.textContent =
+    `Moves Left: ${movesLeft}`;
 };
 
 
@@ -120,27 +296,43 @@ const startGame = () => {
     return;
   }
 
+
   gameStarted = true;
 
-  message =
-    "Get home before the ice wins ! You’ve got 10 moves.";
+
+  if (level === 1) {
+
+    message =
+      "Choose carefully. Not every path is safe.";
+
+  } else {
+
+    message =
+      "Choose your path carefully.";
+  }
+
 
   render();
 };
 
 
 const handleMove = (event) => {
-  const direction = event.target.dataset.direction;
+
+  const direction =
+    event.target.dataset.direction;
+
 
   if (!direction) {
     return;
   }
+
 
   movePlayer(direction);
 };
 
 
 const movePlayer = (direction) => {
+
   if (!gameStarted || gameOver) {
     return;
   }
@@ -175,7 +367,8 @@ const movePlayer = (direction) => {
     newCol >= board[0].length
   ) {
 
-    message = "You can't leave the grid!";
+    message =
+      "You can't leave the board.";
 
     render();
 
@@ -183,13 +376,42 @@ const movePlayer = (direction) => {
   }
 
 
-  if (board[newRow][newCol] === "blocked") {
+  if (
+    board[newRow][newCol] === "blocked"
+  ) {
 
     movesLeft -= 1;
 
-    message = "Blocked! You lost one move.";
+    message =
+      "That path is blocked.";
 
     checkGame();
+
+    render();
+
+    return;
+  }
+
+
+  if (
+    board[newRow][newCol] === "trap"
+  ) {
+
+    player.row = newRow;
+    player.col = newCol;
+
+    board[newRow][newCol] =
+      "broken";
+
+    movesLeft -= 1;
+
+    message =
+      "The Grinch got you! Try another path.";
+
+    gameOver = true;
+
+    restartBtnEl.textContent =
+      "Restart Level";
 
     render();
 
@@ -202,7 +424,7 @@ const movePlayer = (direction) => {
 
   movesLeft -= 1;
 
-  message = "Keep going!";
+  message = "Keep going.";
 
   checkGame();
 
@@ -211,6 +433,7 @@ const movePlayer = (direction) => {
 
 
 const handleKeydown = (event) => {
+
   let direction;
 
 
@@ -218,15 +441,21 @@ const handleKeydown = (event) => {
 
     direction = "up";
 
-  } else if (event.key === "ArrowDown") {
+  } else if (
+    event.key === "ArrowDown"
+  ) {
 
     direction = "down";
 
-  } else if (event.key === "ArrowLeft") {
+  } else if (
+    event.key === "ArrowLeft"
+  ) {
 
     direction = "left";
 
-  } else if (event.key === "ArrowRight") {
+  } else if (
+    event.key === "ArrowRight"
+  ) {
 
     direction = "right";
   }
@@ -245,33 +474,103 @@ const handleKeydown = (event) => {
 
 const checkGame = () => {
 
-  if (board[player.row][player.col] === "goal") {
-
-    message =
-      `Home safe! You win with ${movesLeft} moves left! 🐧🏠`;
+  if (
+    board[player.row][player.col] ===
+    "goal"
+  ) {
 
     gameOver = true;
 
+    levelComplete = true;
 
-  } else if (movesLeft <= 0) {
+
+    if (
+      level === TOTAL_LEVELS - 1
+    ) {
+
+      message =
+        "You completed Last Move!";
+
+      restartBtnEl.textContent =
+        "Play Again";
+
+    } else {
+
+      message =
+        "Level 1 complete!";
+
+      restartBtnEl.textContent =
+        "Next Level";
+    }
+
+
+  } else if (
+    movesLeft <= 0
+  ) {
 
     movesLeft = 0;
 
-    message =
-      "No moves left! Try a different path.";
-
     gameOver = true;
+
+    message =
+      "No moves left. Try again.";
+
+    restartBtnEl.textContent =
+      "Restart Level";
   }
 };
 
+
+const handleRestart = () => {
+
+  if (
+    levelComplete &&
+    level === 0
+  ) {
+
+    level = 1;
+
+    loadLevel();
+
+    return;
+  }
+
+
+  if (
+    levelComplete &&
+    level === TOTAL_LEVELS - 1
+  ) {
+
+    init();
+
+    return;
+  }
+
+
+  loadLevel();
+};
+
+
 /*----------- Event Listeners ----------*/
 
-controlsEl.addEventListener("click", handleMove);
+controlsEl.addEventListener(
+  "click",
+  handleMove
+);
 
-startBtnEl.addEventListener("click", startGame);
+startBtnEl.addEventListener(
+  "click",
+  startGame
+);
 
-restartBtnEl.addEventListener("click", init);
+restartBtnEl.addEventListener(
+  "click",
+  handleRestart
+);
 
-document.addEventListener("keydown", handleKeydown);
+document.addEventListener(
+  "keydown",
+  handleKeydown
+);
 
 init();

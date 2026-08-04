@@ -17,46 +17,49 @@
 
   <main>
 
-    <h1>❄️ Last Move ❄️</h1>
+    <header class="game-header">
 
-    <h2>Penguin Escape</h2>
+      <p class="level-label">
+        LEVEL 1
+      </p>
 
-    <p class="instructions">
-      Help the penguin reach home before the moves run out.
+      <h1>Last Move</h1>
+
+      <h2>Frozen Shore</h2>
+
+    </header>
+
+
+    <p id="moves">
+      Moves Left: 10
     </p>
-
-    <p class="instructions">
-      🐧 Penguin &nbsp;
-      🧊 Ice &nbsp;
-      ❌ Blocked &nbsp;
-      🏠 Home
-    </p>
-
-    <p class="instructions">
-      You have 10 moves. Choose your path carefully!
-    </p>
-
-
-    <p id="moves"></p>
 
 
     <div id="game-board"></div>
+
+
+    <p id="message">
+      Press Start Game to begin!
+    </p>
 
 
     <div id="controls">
 
       <button
         type="button"
+        class="direction-btn"
         data-direction="up"
         aria-label="Move up"
       >
         ↑
       </button>
 
-      <div>
+
+      <div class="control-row">
 
         <button
           type="button"
+          class="direction-btn"
           data-direction="left"
           aria-label="Move left"
         >
@@ -65,6 +68,7 @@
 
         <button
           type="button"
+          class="direction-btn"
           data-direction="down"
           aria-label="Move down"
         >
@@ -73,6 +77,7 @@
 
         <button
           type="button"
+          class="direction-btn"
           data-direction="right"
           aria-label="Move right"
         >
@@ -82,14 +87,6 @@
       </div>
 
     </div>
-
-
-    <p class="keyboard-text">
-      You can also use your keyboard arrow keys.
-    </p>
-
-
-    <p id="message"></p>
 
 
     <div id="game-buttons">
@@ -105,7 +102,7 @@
         type="button"
         id="restart-btn"
       >
-        New Puzzle
+        Restart Level
       </button>
 
     </div>
