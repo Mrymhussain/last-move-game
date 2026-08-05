@@ -80,6 +80,16 @@ h2 {
   font-weight: bold;
 }
 
+#game-logo {
+  width: 90px;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 10px;
+}
+
+
 #game-board {
   display: grid;
 
