@@ -61,6 +61,8 @@ const loadLevel = () => {
   });
 
 
+  /* Level 2 only */
+
   if (level === 1) {
     addRandomTraps();
   }
@@ -78,6 +80,8 @@ const loadLevel = () => {
   levelComplete = false;
 
 
+  /* Start button only for Level 1 */
+
   if (level === 0) {
 
     gameStarted = false;
@@ -92,11 +96,20 @@ const loadLevel = () => {
 
     gameStarted = true;
 
-    message =
-      "Choose carefully. Not every path is safe.";
-
     startBtnEl.style.display =
       "none";
+
+
+    if (level === 1) {
+
+      message =
+        "Choose carefully. Not every path is safe.";
+
+    } else {
+
+      message =
+        "Reach the cabin in the top-right. Other cabins are traps.";
+    }
   }
 
 
@@ -112,7 +125,7 @@ const loadLevel = () => {
 };
 
 
-/*-------------- Random Traps -------------*/
+/*-------------- Level 2 Random Traps -------------*/
 
 const addRandomTraps = () => {
   const trapSpaces = [
@@ -205,6 +218,8 @@ const renderBoard = () => {
           );
 
 
+          /* Level 2 Grinch */
+
           if (
             player.row === rowIndex &&
             player.col === colIndex &&
@@ -239,12 +254,37 @@ const renderBoard = () => {
             );
 
 
+          /* Level 3 Fake Cabin */
+
+          } else if (
+            player.row === rowIndex &&
+            player.col === colIndex &&
+            space === "fakeBroken"
+          ) {
+
+            spaceEl.textContent =
+              "❌";
+
+            spaceEl.classList.add(
+              "fake-broken"
+            );
+
+
+          /* Player */
+
           } else if (
             player.row === rowIndex &&
             player.col === colIndex
           ) {
 
-            if (level === 1) {
+            if (level === 0) {
+
+              spaceEl.textContent =
+                "🐧";
+
+            } else if (
+              level === 1
+            ) {
 
               spaceEl.textContent =
                 "🎅";
@@ -252,7 +292,7 @@ const renderBoard = () => {
             } else {
 
               spaceEl.textContent =
-                "🐧";
+                "🦊";
             }
 
 
@@ -261,11 +301,20 @@ const renderBoard = () => {
             );
 
 
+          /* Blocked */
+
           } else if (
             space === "blocked"
           ) {
 
-            if (level === 1) {
+            if (level === 0) {
+
+              spaceEl.textContent =
+                "❌";
+
+            } else if (
+              level === 1
+            ) {
 
               spaceEl.textContent =
                 "🎄";
@@ -273,7 +322,7 @@ const renderBoard = () => {
             } else {
 
               spaceEl.textContent =
-                "❌";
+                "🌲";
             }
 
 
@@ -281,6 +330,8 @@ const renderBoard = () => {
               "blocked"
             );
 
+
+          /* Real Goal */
 
           } else if (
             space === "goal"
@@ -303,9 +354,33 @@ const renderBoard = () => {
             );
 
 
+          /* Level 3 Fake Goal */
+
+          } else if (
+            space === "fakeGoal"
+          ) {
+
+            spaceEl.textContent =
+              "🏠";
+
+
+            spaceEl.classList.add(
+              "fake-goal"
+            );
+
+
+          /* Normal Path */
+
           } else {
 
-            if (level === 1) {
+            if (level === 0) {
+
+              spaceEl.textContent =
+                "🧊";
+
+            } else if (
+              level === 1
+            ) {
 
               spaceEl.textContent =
                 "❄️";
@@ -313,7 +388,7 @@ const renderBoard = () => {
             } else {
 
               spaceEl.textContent =
-                "🧊";
+                "❄️";
             }
 
 
@@ -440,6 +515,8 @@ const movePlayer = (direction) => {
   }
 
 
+  /* Outside board */
+
   if (
     newRow < 0 ||
     newRow >= board.length ||
@@ -456,6 +533,8 @@ const movePlayer = (direction) => {
     return;
   }
 
+
+  /* Blocked */
 
   if (
     board[newRow][newCol] ===
@@ -476,6 +555,8 @@ const movePlayer = (direction) => {
     return;
   }
 
+
+  /* Level 2 Grinch Trap */
 
   if (
     board[newRow][newCol] ===
@@ -512,6 +593,46 @@ const movePlayer = (direction) => {
     return;
   }
 
+
+  /* Level 3 Fake Cabin */
+
+  if (
+    board[newRow][newCol] ===
+    "fakeGoal"
+  ) {
+
+    player.row =
+      newRow;
+
+    player.col =
+      newCol;
+
+
+    board[newRow][newCol] =
+      "fakeBroken";
+
+
+    movesLeft -= 1;
+
+
+    message =
+      "Wrong cabin! It was a trap.";
+
+
+    gameOver = true;
+
+
+    restartBtnEl.textContent =
+      "Back to Level 1";
+
+
+    render();
+
+    return;
+  }
+
+
+  /* Normal move */
 
   player.row =
     newRow;
@@ -606,7 +727,7 @@ const checkGame = () => {
     } else {
 
       message =
-        "Level 1 complete!";
+        `Level ${level + 1} complete!`;
 
 
       restartBtnEl.textContent =
@@ -634,16 +755,16 @@ const checkGame = () => {
 };
 
 
-/*-------------- Restart -------------*/
+/*-------------- Restart / Next Level -------------*/
 
 const handleRestart = () => {
 
   if (
     levelComplete &&
-    level === 0
+    level < TOTAL_LEVELS - 1
   ) {
 
-    level = 1;
+    level += 1;
 
 
     loadLevel();
@@ -703,5 +824,4 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
-
 init();
