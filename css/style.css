@@ -6,11 +6,16 @@
 
 body {
   margin: 0;
+
   min-height: 100vh;
 
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
 
   background-color: #dff6ff;
+
   color: #163f59;
 
   text-align: center;
@@ -21,7 +26,8 @@ body {
 
 main {
   width: 90%;
-  max-width: 650px;
+
+  max-width: 600px;
 
   margin: 30px auto;
 }
@@ -37,6 +43,7 @@ main {
   display: inline-block;
 
   margin: 0 0 8px;
+
   padding: 6px 15px;
 
   background-color: white;
@@ -44,6 +51,7 @@ main {
   border-radius: 12px;
 
   font-size: 12px;
+
   font-weight: bold;
 }
 
@@ -68,14 +76,17 @@ h2 {
   display: inline-block;
 
   margin: 12px;
+
   padding: 8px 15px;
 
   background-color: white;
 
   border: 2px solid #b8e3f2;
+
   border-radius: 8px;
 
   font-size: 18px;
+
   font-weight: bold;
 }
 
@@ -85,7 +96,8 @@ h2 {
 #game-board {
   display: grid;
 
-  grid-template-columns: repeat(5, 60px);
+  grid-template-columns:
+    repeat(5, 60px);
 
   gap: 5px;
 
@@ -94,6 +106,7 @@ h2 {
   width: fit-content;
 
   margin: 20px auto;
+
   padding: 8px;
 
   background-color: #65bfdf;
@@ -108,18 +121,20 @@ h2 {
   position: relative;
 
   width: 60px;
+
   height: 60px;
 
   display: flex;
 
   justify-content: center;
+
   align-items: center;
 
   border: 2px solid white;
+
   border-radius: 6px;
 
   font-size: 25px;
-  font-weight: bold;
 }
 
 
@@ -159,7 +174,7 @@ body.frozen .goal {
 }
 
 
-/*-------------- Direction Controls -------------*/
+/*-------------- Controls -------------*/
 
 #controls {
   margin: 15px;
@@ -173,6 +188,7 @@ body.frozen .goal {
 
 .direction-btn {
   width: 50px;
+
   height: 40px;
 
   margin: 3px;
@@ -180,6 +196,7 @@ body.frozen .goal {
   background-color: white;
 
   border: 1px solid #6baac2;
+
   border-radius: 5px;
 
   color: #163f59;
@@ -203,9 +220,11 @@ body.frozen .goal {
 #start-btn,
 #restart-btn {
   margin: 5px;
+
   padding: 9px 15px;
 
   border: 1px solid #177ca5;
+
   border-radius: 5px;
 
   font-size: 14px;
@@ -264,10 +283,15 @@ body.christmas #moves {
   border-color: #c8dfce;
 }
 
+
+/*-------------- Level 2 Board -------------*/
+
 body.christmas #game-board {
   background-color: #a8323b;
 
   border: 3px solid white;
+
+  border-radius: 10px;
 }
 
 body.christmas .tile {
@@ -284,14 +308,20 @@ body.christmas .blocked {
 
 body.christmas .player {
   background-color: white;
+
+  border-color: #d1e8d7;
 }
 
 body.christmas .goal {
   background-color: #fff0d7;
+
+  border-color: #e8ca9d;
 }
 
 body.christmas .broken {
   background-color: white;
+
+  border-color: #a8323b;
 
   overflow: visible;
 
@@ -305,14 +335,17 @@ body.christmas .broken {
   position: absolute;
 
   top: 50%;
+
   left: 50%;
 
   width: 72px;
+
   height: 72px;
 
   object-fit: contain;
 
-  transform: translate(-50%, -50%);
+  transform:
+    translate(-50%, -50%);
 
   z-index: 6;
 
@@ -320,11 +353,14 @@ body.christmas .broken {
 }
 
 
-/*-------------- Level 2 Controls -------------*/
+/*-------------- Level 2 Message -------------*/
 
 body.christmas #message {
   color: #175c3a;
 }
+
+
+/*-------------- Level 2 Controls -------------*/
 
 body.christmas .direction-btn {
   background-color: white;
@@ -333,6 +369,13 @@ body.christmas .direction-btn {
 
   color: #a8323b;
 }
+
+body.christmas .direction-btn:hover {
+  background-color: #fff0f1;
+}
+
+
+/*-------------- Level 2 Buttons -------------*/
 
 body.christmas #start-btn {
   background-color: #a8323b;
@@ -351,218 +394,12 @@ body.christmas #restart-btn {
 }
 
 
-/*-------------- Level 3 - Midnight Words -------------*/
-
-body.words {
-  background-color: #080d18;
-
-  color: #f0f4ff;
-}
-
-body.words .level-label {
-  background-color: #3a2868;
-
-  color: white;
-
-  border: 1px solid #8669c9;
-}
-
-body.words h1 {
-  color: #f3f0ff;
-}
-
-body.words h2 {
-  color: #b9a8e8;
-}
-
-body.words #moves {
-  background-color: #151c2e;
-
-  color: white;
-
-  border-color: #68509d;
-}
-
-
-/*-------------- Level 3 Board -------------*/
-
-body.words #game-board {
-  grid-template-columns: repeat(5, 90px);
-
-  gap: 5px;
-
-  padding: 10px;
-
-  background-color: #111a2c;
-
-  border: 3px solid #59458c;
-}
-
-body.words .tile {
-  width: 90px;
-  height: 65px;
-
-  border-color: #8095bd;
-
-  border-radius: 7px;
-
-  font-size: 14px;
-}
-
-
-/*-------------- Level 3 Words -------------*/
-
-body.words .safe-word {
-  background-color: #d9e8f2;
-
-  color: #17253b;
-}
-
-body.words .poison-word {
-  background-color: #543357;
-
-  color: #ffe6f1;
-
-  border-color: #9d648c;
-}
-
-body.words .word-wall {
-  background-color: #313847;
-
-  color: #c5cad3;
-
-  border-color: #666e7c;
-}
-
-body.words .word-goal {
-  background-color: #56428f;
-
-  color: white;
-
-  border-color: #a88be9;
-
-  box-shadow: 0 0 10px #a88be9;
-}
-
-body.words .word-player {
-  background-color: #e5eff5;
-
-  color: #17253b;
-
-  font-size: 29px;
-
-  border-color: #7b9db9;
-}
-
-
-/*-------------- Poison Result -------------*/
-
-body.words .poison-hit {
-  background-color: #781f45;
-
-  color: white;
-
-  border-color: #ed76a6;
-
-  font-size: 32px;
-
-  animation: dangerReveal 0.5s ease;
-}
-
-
-/*-------------- Hidden Hole Result -------------*/
-
-body.words .hole-hit {
-  background-color: #020305;
-
-  color: black;
-
-  border-color: #444b5a;
-
-  font-size: 38px;
-
-  animation: holeReveal 0.5s ease;
-}
-
-
-/*-------------- Level 3 Animations -------------*/
-
-@keyframes dangerReveal {
-
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.15);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes holeReveal {
-
-  0% {
-    transform: scale(0.3);
-    opacity: 0;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-
-/*-------------- Level 3 Message -------------*/
-
-body.words #message {
-  color: #d3c8ef;
-}
-
-
-/*-------------- Level 3 Controls -------------*/
-
-body.words .direction-btn {
-  background-color: #171f32;
-
-  color: white;
-
-  border-color: #6c579f;
-}
-
-body.words .direction-btn:hover {
-  background-color: #29213f;
-}
-
-
-/*-------------- Level 3 Buttons -------------*/
-
-body.words #start-btn {
-  background-color: #513a87;
-
-  color: white;
-
-  border-color: #9a7ed7;
-}
-
-body.words #restart-btn {
-  background-color: #171f32;
-
-  color: white;
-
-  border-color: #6c579f;
-}
-
-
 /*-------------- Mobile -------------*/
 
-@media (max-width: 550px) {
+@media (max-width: 500px) {
 
   main {
-    width: 96%;
+    width: 95%;
   }
 
   h1 {
@@ -570,7 +407,8 @@ body.words #restart-btn {
   }
 
   #game-board {
-    grid-template-columns: repeat(5, 50px);
+    grid-template-columns:
+      repeat(5, 50px);
 
     gap: 4px;
 
@@ -579,6 +417,7 @@ body.words #restart-btn {
 
   .tile {
     width: 50px;
+
     height: 50px;
 
     font-size: 22px;
@@ -586,33 +425,7 @@ body.words #restart-btn {
 
   .grinch-img {
     width: 60px;
+
     height: 60px;
-  }
-
-  body.words #game-board {
-    grid-template-columns: repeat(5, 62px);
-
-    gap: 3px;
-
-    padding: 5px;
-  }
-
-  body.words .tile {
-    width: 62px;
-    height: 55px;
-
-    font-size: 9px;
-  }
-
-  body.words .word-player {
-    font-size: 24px;
-  }
-
-  body.words .poison-hit {
-    font-size: 26px;
-  }
-
-  body.words .hole-hit {
-    font-size: 30px;
   }
 }
