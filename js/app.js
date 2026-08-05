@@ -1,10 +1,7 @@
 /*-------------- Constants -------------*/
-
 const TOTAL_LEVELS = LEVELS.length;
 const NUMBER_OF_TRAPS = 4;
 const NUMBER_OF_FAKE_HOUSES = 3;
-
-
 /*---------- Variables ---------*/
 
 let level;
@@ -16,7 +13,6 @@ let gameOver;
 let gameStarted;
 let levelComplete;
 let message;
-
 
 /*----- Cached Element References  -----*/
 
@@ -43,7 +39,6 @@ const levelLabelEl =
 
 const levelNameEl =
   document.querySelector(".game-header h2");
-
 
 /*-------------- Functions -------------*/
 
@@ -232,9 +227,6 @@ const addRandomFakeGoals = () => {
   }
 };
 
-
-/*-------------- Render -------------*/
-
 const render = () => {
   renderBoard();
 
@@ -248,9 +240,6 @@ const render = () => {
   startBtnEl.disabled =
     gameStarted;
 };
-
-
-/*-------------- Render Board -------------*/
 
 const renderBoard = () => {
   gameBoardEl.innerHTML = "";
