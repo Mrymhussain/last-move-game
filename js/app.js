@@ -1,13 +1,10 @@
 /*-------------- Constants -------------*/
 
 const TOTAL_LEVELS = LEVELS.length;
-
 const NUMBER_OF_TRAPS = 4;
-
 const NUMBER_OF_FAKE_HOUSES = 3;
 
-
-/*---------- Variables (state) ---------*/
+/*---------- Variables ---------*/
 
 let level;
 let currentLevel;
@@ -18,7 +15,6 @@ let gameOver;
 let gameStarted;
 let levelComplete;
 let message;
-
 
 /*----- Cached Element References  -----*/
 
@@ -63,15 +59,9 @@ const loadLevel = () => {
     return row.slice();
   });
 
-
-  /* Level 2 only */
-
   if (level === 1) {
     addRandomTraps();
   }
-
-
-  /* Level 3 only */
 
   if (level === 2) {
     addRandomFakeGoals();
@@ -89,9 +79,6 @@ const loadLevel = () => {
   gameOver = false;
 
   levelComplete = false;
-
-
-  /* Start button only for Level 1 */
 
   if (level === 0) {
 
@@ -134,9 +121,6 @@ const loadLevel = () => {
 
   render();
 };
-
-
-/*-------------- Level 2 Random Traps -------------*/
 
 const addRandomTraps = () => {
   const trapSpaces = [
@@ -187,9 +171,6 @@ const addRandomTraps = () => {
     }
   }
 };
-
-
-/*-------------- Level 3 Random Fake Houses -------------*/
 
 const addRandomFakeGoals = () => {
   const fakeGoalSpaces = [
@@ -246,9 +227,6 @@ const addRandomFakeGoals = () => {
   }
 };
 
-
-/*-------------- Render -------------*/
-
 const render = () => {
   renderBoard();
 
@@ -262,9 +240,6 @@ const render = () => {
   startBtnEl.disabled =
     gameStarted;
 };
-
-
-/*-------------- Render Board -------------*/
 
 const renderBoard = () => {
   gameBoardEl.innerHTML = "";
@@ -285,9 +260,6 @@ const renderBoard = () => {
           spaceEl.classList.add(
             "tile"
           );
-
-
-          /* Level 2 Grinch */
 
           if (
             player.row === rowIndex &&
@@ -323,9 +295,6 @@ const renderBoard = () => {
               "broken"
             );
 
-
-          /* Level 3 Fallen Hole */
-
           } else if (
             player.row === rowIndex &&
             player.col === colIndex &&
@@ -339,9 +308,6 @@ const renderBoard = () => {
             spaceEl.classList.add(
               "fake-broken"
             );
-
-
-          /* Player */
 
           } else if (
             player.row === rowIndex &&
@@ -371,9 +337,6 @@ const renderBoard = () => {
               "player"
             );
 
-
-          /* Blocked */
-
           } else if (
             space === "blocked"
           ) {
@@ -401,9 +364,6 @@ const renderBoard = () => {
               "blocked"
             );
 
-
-          /* Real Goal */
-
           } else if (
             space === "goal"
           ) {
@@ -424,9 +384,6 @@ const renderBoard = () => {
               "goal"
             );
 
-
-          /* Level 3 Fake Cabin */
-
           } else if (
             space === "fakeGoal"
           ) {
@@ -438,9 +395,6 @@ const renderBoard = () => {
             spaceEl.classList.add(
               "fake-goal"
             );
-
-
-          /* Normal Path */
 
           } else {
 
@@ -479,23 +433,15 @@ const renderBoard = () => {
 };
 
 
-/*-------------- Render Moves -------------*/
-
 const renderMoves = () => {
   movesEl.textContent =
     `Moves Left: ${movesLeft}`;
 };
 
-
-/*-------------- Render Message -------------*/
-
 const renderMessage = () => {
   messageEl.textContent =
     message;
 };
-
-
-/*-------------- Render Level -------------*/
 
 const renderLevel = () => {
   levelLabelEl.textContent =
@@ -505,9 +451,6 @@ const renderLevel = () => {
   levelNameEl.textContent =
     currentLevel.name;
 };
-
-
-/*-------------- Start Game -------------*/
 
 const startGame = () => {
   if (gameStarted) {
@@ -524,10 +467,6 @@ const startGame = () => {
 
   render();
 };
-
-
-/*-------------- Handle Move -------------*/
-
 const handleMove = (event) => {
   const direction =
     event.target.dataset.direction;
@@ -540,9 +479,6 @@ const handleMove = (event) => {
 
   movePlayer(direction);
 };
-
-
-/*-------------- Move Player -------------*/
 
 const movePlayer = (direction) => {
   if (
@@ -585,9 +521,6 @@ const movePlayer = (direction) => {
     newCol += 1;
   }
 
-
-  /* Outside board */
-
   if (
     newRow < 0 ||
     newRow >= board.length ||
@@ -603,10 +536,6 @@ const movePlayer = (direction) => {
 
     return;
   }
-
-
-  /* Blocked */
-
   if (
     board[newRow][newCol] ===
     "blocked"
@@ -625,9 +554,6 @@ const movePlayer = (direction) => {
 
     return;
   }
-
-
-  /* Level 2 Grinch Trap */
 
   if (
     board[newRow][newCol] ===
@@ -663,10 +589,6 @@ const movePlayer = (direction) => {
 
     return;
   }
-
-
-  /* Level 3 Fake Cabin */
-
   if (
     board[newRow][newCol] ===
     "fakeGoal"
@@ -702,9 +624,6 @@ const movePlayer = (direction) => {
     return;
   }
 
-
-  /* Normal Move */
-
   player.row =
     newRow;
 
@@ -723,9 +642,6 @@ const movePlayer = (direction) => {
 
   render();
 };
-
-
-/*-------------- Keyboard -------------*/
 
 const handleKeydown = (event) => {
   let direction;
@@ -767,9 +683,6 @@ const handleKeydown = (event) => {
 
   movePlayer(direction);
 };
-
-
-/*-------------- Check Game -------------*/
 
 const checkGame = () => {
 
@@ -824,10 +737,6 @@ const checkGame = () => {
       "Back to Level 1";
   }
 };
-
-
-/*-------------- Restart / Next Level -------------*/
-
 const handleRestart = () => {
 
   if (
@@ -895,8 +804,4 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
-
-
-/*-------------- Start Game -------------*/
-
 init();

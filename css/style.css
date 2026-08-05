@@ -1,4 +1,3 @@
-/*-------------- General -------------*/
 
 * {
   box-sizing: border-box;
@@ -21,9 +20,6 @@ body {
   text-align: center;
 }
 
-
-/*-------------- Main Container -------------*/
-
 main {
   width: 90%;
 
@@ -31,9 +27,6 @@ main {
 
   margin: 30px auto;
 }
-
-
-/*-------------- Header -------------*/
 
 .game-header {
   margin-bottom: 15px;
@@ -69,9 +62,6 @@ h2 {
   color: #4d819b;
 }
 
-
-/*-------------- Moves -------------*/
-
 #moves {
   display: inline-block;
 
@@ -89,9 +79,6 @@ h2 {
 
   font-weight: bold;
 }
-
-
-/*-------------- Game Board -------------*/
 
 #game-board {
   display: grid;
@@ -114,9 +101,6 @@ h2 {
   border-radius: 10px;
 }
 
-
-/*-------------- Board Spaces -------------*/
-
 .tile {
   position: relative;
 
@@ -136,9 +120,6 @@ h2 {
 
   font-size: 25px;
 }
-
-
-/*-------------- Level 1 - Frozen -------------*/
 
 body.frozen {
   background-color: #dff6ff;
@@ -163,8 +144,6 @@ body.frozen .goal {
 }
 
 
-/*-------------- Message -------------*/
-
 #message {
   min-height: 25px;
 
@@ -173,8 +152,6 @@ body.frozen .goal {
   font-weight: bold;
 }
 
-
-/*-------------- Controls -------------*/
 
 #controls {
   margin: 15px;
@@ -209,9 +186,6 @@ body.frozen .goal {
 .direction-btn:hover {
   background-color: #e9f8fd;
 }
-
-
-/*-------------- Game Buttons -------------*/
 
 #game-buttons {
   margin-top: 15px;
@@ -250,9 +224,6 @@ button:disabled {
   cursor: default;
 }
 
-
-/*-------------- Level 2 - Christmas -------------*/
-
 body.christmas {
   background-color: #cfe0d3;
 
@@ -282,9 +253,6 @@ body.christmas #moves {
 
   border-color: #c8dfce;
 }
-
-
-/*-------------- Level 2 Board -------------*/
 
 body.christmas #game-board {
   background-color: #a8323b;
@@ -328,9 +296,6 @@ body.christmas .broken {
   z-index: 5;
 }
 
-
-/*-------------- Grinch GIF -------------*/
-
 .grinch-img {
   position: absolute;
 
@@ -352,15 +317,9 @@ body.christmas .broken {
   pointer-events: none;
 }
 
-
-/*-------------- Level 2 Message -------------*/
-
 body.christmas #message {
   color: #175c3a;
 }
-
-
-/*-------------- Level 2 Controls -------------*/
 
 body.christmas .direction-btn {
   background-color: white;
@@ -374,8 +333,6 @@ body.christmas .direction-btn:hover {
   background-color: #fff0f1;
 }
 
-
-/*-------------- Level 2 Buttons -------------*/
 
 body.christmas #start-btn {
   background-color: #a8323b;
@@ -393,7 +350,6 @@ body.christmas #restart-btn {
   color: #175c3a;
 }
 
-/*-------------- Level 3 - Soft Winter Night -------------*/
 
 body.midnight {
   background-color: #c7d6ec;
@@ -427,8 +383,6 @@ body.midnight #moves {
 }
 
 
-/*-------------- Level 3 Board -------------*/
-
 body.midnight #game-board {
   background-color: #6f8fb7;
 
@@ -441,8 +395,6 @@ body.midnight .tile {
   border-color: #dceaf5;
 }
 
-
-/*-------------- Level 3 Spaces -------------*/
 
 body.midnight .ice {
   background-color: #b9d5ea;
@@ -476,14 +428,12 @@ body.midnight .fake-broken {
 }
 
 
-/*-------------- Level 3 Message -------------*/
 
 body.midnight #message {
   color: #35516f;
 }
 
 
-/*-------------- Level 3 Controls -------------*/
 
 body.midnight .direction-btn {
   background-color: #eef5fb;
@@ -498,7 +448,6 @@ body.midnight .direction-btn:hover {
 }
 
 
-/*-------------- Level 3 Restart Button -------------*/
 
 body.midnight #restart-btn {
   background-color: #eef5fb;
@@ -507,8 +456,6 @@ body.midnight #restart-btn {
 
   border: 1px solid #9db5cf;
 }
-
-/*-------------- Mobile -------------*/
 
 @media (max-width: 500px) {
 
