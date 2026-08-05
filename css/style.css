@@ -393,141 +393,120 @@ body.christmas #restart-btn {
   color: #175c3a;
 }
 
-
-/*-------------- Level 3 - Midnight Winter -------------*/
+/*-------------- Level 3 - Soft Winter Night -------------*/
 
 body.midnight {
-  background-color: #070b12;
-
-  color: #f3f7fb;
+  background-color: #c7d6ec;
+  color: #20324a;
 }
 
 body.midnight .level-label {
-  background-color: #121923;
+  background-color: #eaf2fb;
 
-  color: #d9ecf7;
+  color: #3f5f86;
 
-  border: 1px solid #2d4152;
+  border: 1px solid #9fb7d3;
 
   border-radius: 8px;
 }
 
 body.midnight h1 {
-  color: #f5fbff;
+  color: #29486d;
 }
 
 body.midnight h2 {
-  color: #88b9d1;
+  color: #5f84ad;
 }
 
 body.midnight #moves {
-  background-color: #111923;
+  background-color: #eef5fb;
 
-  color: #f4f8fb;
+  color: #29486d;
 
-  border: 1px solid #294153;
+  border: 1px solid #9db5cf;
 }
 
 
 /*-------------- Level 3 Board -------------*/
 
 body.midnight #game-board {
-  background-color: #101a24;
+  background-color: #6f8fb7;
 
-  border: 2px solid #304b5f;
+  border: 2px solid #d8e6f4;
 
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 body.midnight .tile {
-  border-color: #35576d;
+  border-color: #dceaf5;
 }
 
 
-/*-------------- Level 3 Snow -------------*/
+/*-------------- Level 3 Spaces -------------*/
 
 body.midnight .ice {
-  background-color: #182a37;
+  background-color: #b9d5ea;
 }
-
-
-/*-------------- Level 3 Trees -------------*/
 
 body.midnight .blocked {
-  background-color: #10221d;
+  background-color: #6d927f;
 
-  border-color: #28463c;
+  border-color: #b8d5c6;
 }
-
-
-/*-------------- Level 3 Fox -------------*/
 
 body.midnight .player {
-  background-color: #243746;
+  background-color: #f7fbff;
 
-  border-color: #6d98ad;
+  border-color: #aac4dc;
 }
-
-
-/*-------------- Level 3 Cabins -------------*/
 
 body.midnight .goal,
 body.midnight .fake-goal {
-  background-color: #25313b;
+  background-color: #d9c7af;
 
-  border-color: #607b8b;
+  border-color: #f2e6d5;
 }
 
-
-/*
-Real and fake cabins look the same
-so the answer is not revealed.
-*/
-
-
-/*-------------- Level 3 Wrong Cabin -------------*/
-
 body.midnight .fake-broken {
-  background-color: #24131a;
+  background-color: #61718a;
 
-  border-color: #6a3345;
+  border-color: #c4d3e3;
 
-  font-size: 28px;
+  font-size: 30px;
 }
 
 
 /*-------------- Level 3 Message -------------*/
 
 body.midnight #message {
-  color: #bdd4df;
+  color: #35516f;
 }
 
 
 /*-------------- Level 3 Controls -------------*/
 
 body.midnight .direction-btn {
-  background-color: #111923;
+  background-color: #eef5fb;
 
-  color: #e8f3f8;
+  color: #29486d;
 
-  border: 1px solid #35566a;
+  border: 1px solid #9db5cf;
 }
 
 body.midnight .direction-btn:hover {
-  background-color: #1b2a36;
+  background-color: #dceaf5;
 }
 
 
 /*-------------- Level 3 Restart Button -------------*/
 
 body.midnight #restart-btn {
-  background-color: #9faec1;
+  background-color: #eef5fb;
 
-  color: #e8f3f8;
+  color: #29486d;
 
-  border: 1px solid #35566a;
+  border: 1px solid #9db5cf;
 }
-
 
 /*-------------- Mobile -------------*/
 

@@ -324,7 +324,7 @@ const renderBoard = () => {
             );
 
 
-          /* Level 3 Wrong Cabin */
+          /* Level 3 Fallen Hole */
 
           } else if (
             player.row === rowIndex &&
@@ -333,7 +333,7 @@ const renderBoard = () => {
           ) {
 
             spaceEl.textContent =
-              "❌";
+              "🕳️";
 
 
             spaceEl.classList.add(
@@ -687,7 +687,7 @@ const movePlayer = (direction) => {
 
 
     message =
-      "Wrong cabin! It was a trap.";
+      "Wrong cabin! You fell into a hidden hole.";
 
 
     gameOver = true;
@@ -703,7 +703,7 @@ const movePlayer = (direction) => {
   }
 
 
-  /* Normal move */
+  /* Normal Move */
 
   player.row =
     newRow;
@@ -895,5 +895,8 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
+
+
+/*-------------- Start Game -------------*/
 
 init();
