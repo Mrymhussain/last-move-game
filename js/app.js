@@ -1,7 +1,10 @@
 /*-------------- Constants -------------*/
 
 const TOTAL_LEVELS = LEVELS.length;
+
 const NUMBER_OF_TRAPS = 4;
+
+const NUMBER_OF_FAKE_HOUSES = 3;
 
 
 /*---------- Variables (state) ---------*/
@@ -68,6 +71,13 @@ const loadLevel = () => {
   }
 
 
+  /* Level 3 only */
+
+  if (level === 2) {
+    addRandomFakeGoals();
+  }
+
+
   player = {
     row: 4,
     col: 0
@@ -77,6 +87,7 @@ const loadLevel = () => {
   movesLeft = currentLevel.moves;
 
   gameOver = false;
+
   levelComplete = false;
 
 
@@ -178,6 +189,64 @@ const addRandomTraps = () => {
 };
 
 
+/*-------------- Level 3 Random Fake Houses -------------*/
+
+const addRandomFakeGoals = () => {
+  const fakeGoalSpaces = [
+    [4, 4],
+    [3, 4],
+    [3, 3],
+    [3, 2],
+    [2, 4],
+    [2, 2],
+    [2, 1],
+    [1, 4],
+    [1, 3],
+    [1, 2],
+    [0, 2],
+    [0, 1]
+  ];
+
+
+  let fakeGoalsAdded = 0;
+
+
+  while (
+    fakeGoalsAdded <
+    NUMBER_OF_FAKE_HOUSES
+  ) {
+
+    const randomIndex =
+      Math.floor(
+        Math.random() *
+        fakeGoalSpaces.length
+      );
+
+
+    const randomSpace =
+      fakeGoalSpaces[randomIndex];
+
+
+    const row =
+      randomSpace[0];
+
+    const col =
+      randomSpace[1];
+
+
+    if (
+      board[row][col] === "ice"
+    ) {
+
+      board[row][col] =
+        "fakeGoal";
+
+      fakeGoalsAdded += 1;
+    }
+  }
+};
+
+
 /*-------------- Render -------------*/
 
 const render = () => {
@@ -235,6 +304,7 @@ const renderBoard = () => {
             grinchImg.src =
               "./grinch.gif";
 
+
             grinchImg.alt =
               "Grinch";
 
@@ -254,7 +324,7 @@ const renderBoard = () => {
             );
 
 
-          /* Level 3 Fake Cabin */
+          /* Level 3 Wrong Cabin */
 
           } else if (
             player.row === rowIndex &&
@@ -264,6 +334,7 @@ const renderBoard = () => {
 
             spaceEl.textContent =
               "❌";
+
 
             spaceEl.classList.add(
               "fake-broken"
@@ -354,7 +425,7 @@ const renderBoard = () => {
             );
 
 
-          /* Level 3 Fake Goal */
+          /* Level 3 Fake Cabin */
 
           } else if (
             space === "fakeGoal"
@@ -824,4 +895,5 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
+
 init();
