@@ -4,6 +4,7 @@ const TOTAL_LEVELS = LEVELS.length;
 const NUMBER_OF_TRAPS = 4;
 const NUMBER_OF_FAKE_HOUSES = 3;
 
+
 /*---------- Variables ---------*/
 
 let level;
@@ -15,6 +16,7 @@ let gameOver;
 let gameStarted;
 let levelComplete;
 let message;
+
 
 /*----- Cached Element References  -----*/
 
@@ -59,9 +61,11 @@ const loadLevel = () => {
     return row.slice();
   });
 
+
   if (level === 1) {
     addRandomTraps();
   }
+
 
   if (level === 2) {
     addRandomFakeGoals();
@@ -79,6 +83,7 @@ const loadLevel = () => {
   gameOver = false;
 
   levelComplete = false;
+
 
   if (level === 0) {
 
@@ -227,6 +232,9 @@ const addRandomFakeGoals = () => {
   }
 };
 
+
+/*-------------- Render -------------*/
+
 const render = () => {
   renderBoard();
 
@@ -240,6 +248,9 @@ const render = () => {
   startBtnEl.disabled =
     gameStarted;
 };
+
+
+/*-------------- Render Board -------------*/
 
 const renderBoard = () => {
   gameBoardEl.innerHTML = "";
@@ -260,6 +271,26 @@ const renderBoard = () => {
           spaceEl.classList.add(
             "tile"
           );
+
+          if (
+            level === 1 &&
+            space === "trap"
+          ) {
+
+            spaceEl.classList.add(
+              "presenter-trap"
+            );
+          }
+          if (
+            level === 2 &&
+            space === "fakeGoal"
+          ) {
+
+            spaceEl.classList.add(
+              "presenter-fake-goal"
+            );
+          }
+
 
           if (
             player.row === rowIndex &&
@@ -295,6 +326,7 @@ const renderBoard = () => {
               "broken"
             );
 
+
           } else if (
             player.row === rowIndex &&
             player.col === colIndex &&
@@ -308,6 +340,7 @@ const renderBoard = () => {
             spaceEl.classList.add(
               "fake-broken"
             );
+
 
           } else if (
             player.row === rowIndex &&
@@ -337,6 +370,7 @@ const renderBoard = () => {
               "player"
             );
 
+
           } else if (
             space === "blocked"
           ) {
@@ -364,6 +398,7 @@ const renderBoard = () => {
               "blocked"
             );
 
+
           } else if (
             space === "goal"
           ) {
@@ -384,6 +419,7 @@ const renderBoard = () => {
               "goal"
             );
 
+
           } else if (
             space === "fakeGoal"
           ) {
@@ -395,6 +431,7 @@ const renderBoard = () => {
             spaceEl.classList.add(
               "fake-goal"
             );
+
 
           } else {
 
@@ -432,16 +469,17 @@ const renderBoard = () => {
   );
 };
 
-
 const renderMoves = () => {
   movesEl.textContent =
     `Moves Left: ${movesLeft}`;
 };
 
+
 const renderMessage = () => {
   messageEl.textContent =
     message;
 };
+
 
 const renderLevel = () => {
   levelLabelEl.textContent =
@@ -467,6 +505,7 @@ const startGame = () => {
 
   render();
 };
+
 const handleMove = (event) => {
   const direction =
     event.target.dataset.direction;
@@ -521,6 +560,7 @@ const movePlayer = (direction) => {
     newCol += 1;
   }
 
+
   if (
     newRow < 0 ||
     newRow >= board.length ||
@@ -536,6 +576,8 @@ const movePlayer = (direction) => {
 
     return;
   }
+
+
   if (
     board[newRow][newCol] ===
     "blocked"
@@ -554,6 +596,7 @@ const movePlayer = (direction) => {
 
     return;
   }
+
 
   if (
     board[newRow][newCol] ===
@@ -589,6 +632,8 @@ const movePlayer = (direction) => {
 
     return;
   }
+
+
   if (
     board[newRow][newCol] ===
     "fakeGoal"
@@ -623,6 +668,7 @@ const movePlayer = (direction) => {
 
     return;
   }
+
 
   player.row =
     newRow;
@@ -737,6 +783,7 @@ const checkGame = () => {
       "Back to Level 1";
   }
 };
+
 const handleRestart = () => {
 
   if (
@@ -804,4 +851,5 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
+
 init();

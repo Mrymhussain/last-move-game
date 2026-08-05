@@ -1,4 +1,3 @@
-
 * {
   box-sizing: border-box;
 }
@@ -143,7 +142,6 @@ body.frozen .goal {
   background-color: #d7f0d7;
 }
 
-
 #message {
   min-height: 25px;
 
@@ -151,7 +149,6 @@ body.frozen .goal {
 
   font-weight: bold;
 }
-
 
 #controls {
   margin: 15px;
@@ -296,6 +293,26 @@ body.christmas .broken {
   z-index: 5;
 }
 
+body.christmas .presenter-trap::after {
+  content: "";
+
+  position: absolute;
+
+  top: 3px;
+
+  right: 3px;
+
+  width: 2px;
+
+  height: 2px;
+
+  border-radius: 50%;
+
+  background-color:
+    rgba(168, 50, 59, 0.18);
+}
+
+
 .grinch-img {
   position: absolute;
 
@@ -333,7 +350,6 @@ body.christmas .direction-btn:hover {
   background-color: #fff0f1;
 }
 
-
 body.christmas #start-btn {
   background-color: #a8323b;
 
@@ -350,9 +366,9 @@ body.christmas #restart-btn {
   color: #175c3a;
 }
 
-
 body.midnight {
   background-color: #c7d6ec;
+
   color: #20324a;
 }
 
@@ -382,7 +398,6 @@ body.midnight #moves {
   border: 1px solid #9db5cf;
 }
 
-
 body.midnight #game-board {
   background-color: #6f8fb7;
 
@@ -394,7 +409,6 @@ body.midnight #game-board {
 body.midnight .tile {
   border-color: #dceaf5;
 }
-
 
 body.midnight .ice {
   background-color: #b9d5ea;
@@ -427,13 +441,29 @@ body.midnight .fake-broken {
   font-size: 30px;
 }
 
+body.midnight .presenter-fake-goal::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: 3px;
+
+  left: 3px;
+
+  width: 2px;
+
+  height: 2px;
+
+  border-radius: 50%;
+
+  background-color:
+    rgba(41, 72, 109, 0.18);
+}
 
 
 body.midnight #message {
   color: #35516f;
 }
-
-
 
 body.midnight .direction-btn {
   background-color: #eef5fb;
@@ -446,8 +476,6 @@ body.midnight .direction-btn {
 body.midnight .direction-btn:hover {
   background-color: #dceaf5;
 }
-
-
 
 body.midnight #restart-btn {
   background-color: #eef5fb;

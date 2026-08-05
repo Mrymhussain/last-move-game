@@ -31,13 +31,13 @@ const LEVELS = [
     name: "Midnight Cabins",
     theme: "midnight",
     moves: 10,
-
+  
     board: [
-      ["ice", "blocked", "fakeGoal", "ice", "goal"],
+      ["ice", "blocked", "ice", "goal", "goal"],
       ["ice", "blocked", "ice", "ice", "ice"],
-      ["ice", "ice", "ice", "blocked", "fakeGoal"],
-      ["blocked", "ice", "fakeGoal", "ice", "ice"],
+      ["ice", "ice", "ice", "blocked", "goal"],
+      ["blocked", "ice", "ice", "ice", "ice"],
       ["start", "ice", "blocked", "ice", "ice"]
     ]
-  }
-];
+  }]
+  
