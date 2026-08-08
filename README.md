@@ -1,5 +1,9 @@
 # Last Move
 
+<p align="center">
+  <img src="./LAST.png" alt="Last Move Logo" width="300">
+</p>
+
 ## Game Description
 
 Last Move is a grid-based browser game where the player needs to reach the goal before the number of moves runs out.
