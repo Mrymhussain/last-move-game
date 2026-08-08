@@ -31,7 +31,7 @@ const LEVELS = [
     name: "Midnight Cabins",
     theme: "midnight",
     moves: 10,
-  
+
     board: [
       ["ice", "blocked", "ice", "goal", "goal"],
       ["ice", "blocked", "ice", "ice", "ice"],
@@ -39,5 +39,5 @@ const LEVELS = [
       ["blocked", "ice", "ice", "ice", "ice"],
       ["start", "ice", "blocked", "ice", "ice"]
     ]
-  }]
-  
+  }
+];

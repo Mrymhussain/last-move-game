@@ -1,7 +1,10 @@
 /*-------------- Constants -------------*/
+
 const TOTAL_LEVELS = LEVELS.length;
 const NUMBER_OF_TRAPS = 4;
 const NUMBER_OF_FAKE_HOUSES = 3;
+
+
 /*---------- Variables ---------*/
 
 let level;
@@ -13,6 +16,7 @@ let gameOver;
 let gameStarted;
 let levelComplete;
 let message;
+
 
 /*----- Cached Element References  -----*/
 
@@ -40,12 +44,33 @@ const levelLabelEl =
 const levelNameEl =
   document.querySelector(".game-header h2");
 
+const startScreenEl =
+  document.querySelector("#start-screen");
+
+const gameScreenEl =
+  document.querySelector("#game-screen");
+
+
 /*-------------- Functions -------------*/
+
+const showStartScreen = () => {
+  startScreenEl.classList.remove("hidden");
+  gameScreenEl.classList.add("hidden");
+};
+
+
+const showGameScreen = () => {
+  startScreenEl.classList.add("hidden");
+  gameScreenEl.classList.remove("hidden");
+};
+
 
 const init = () => {
   level = 0;
 
   loadLevel();
+
+  showStartScreen();
 };
 
 
@@ -122,6 +147,7 @@ const loadLevel = () => {
   render();
 };
 
+
 const addRandomTraps = () => {
   const trapSpaces = [
     [4, 4],
@@ -171,6 +197,7 @@ const addRandomTraps = () => {
     }
   }
 };
+
 
 const addRandomFakeGoals = () => {
   const fakeGoalSpaces = [
@@ -227,6 +254,7 @@ const addRandomFakeGoals = () => {
   }
 };
 
+
 const render = () => {
   renderBoard();
 
@@ -240,6 +268,7 @@ const render = () => {
   startBtnEl.disabled =
     gameStarted;
 };
+
 
 const renderBoard = () => {
   gameBoardEl.innerHTML = "";
@@ -261,6 +290,7 @@ const renderBoard = () => {
             "tile"
           );
 
+
           if (
             level === 1 &&
             space === "trap"
@@ -270,6 +300,8 @@ const renderBoard = () => {
               "presenter-trap"
             );
           }
+
+
           if (
             level === 2 &&
             space === "fakeGoal"
@@ -458,6 +490,7 @@ const renderBoard = () => {
   );
 };
 
+
 const renderMoves = () => {
   movesEl.textContent =
     `Moves Left: ${movesLeft}`;
@@ -479,6 +512,7 @@ const renderLevel = () => {
     currentLevel.name;
 };
 
+
 const startGame = () => {
   if (gameStarted) {
     return;
@@ -492,8 +526,12 @@ const startGame = () => {
     "Choose your path carefully.";
 
 
+  showGameScreen();
+
+
   render();
 };
+
 
 const handleMove = (event) => {
   const direction =
@@ -507,6 +545,7 @@ const handleMove = (event) => {
 
   movePlayer(direction);
 };
+
 
 const movePlayer = (direction) => {
   if (
@@ -678,6 +717,7 @@ const movePlayer = (direction) => {
   render();
 };
 
+
 const handleKeydown = (event) => {
   let direction;
 
@@ -718,6 +758,7 @@ const handleKeydown = (event) => {
 
   movePlayer(direction);
 };
+
 
 const checkGame = () => {
 
@@ -773,6 +814,7 @@ const checkGame = () => {
   }
 };
 
+
 const handleRestart = () => {
 
   if (
@@ -812,7 +854,29 @@ const handleRestart = () => {
   }
 
 
+  const wasGameStarted =
+    gameStarted;
+
+
   loadLevel();
+
+
+  if (
+    level === 0 &&
+    wasGameStarted
+  ) {
+
+    gameStarted = true;
+
+    message =
+      "Choose your path carefully.";
+
+
+    showGameScreen();
+
+
+    render();
+  }
 };
 
 
@@ -840,5 +904,6 @@ document.addEventListener(
   "keydown",
   handleKeydown
 );
+
 
 init();

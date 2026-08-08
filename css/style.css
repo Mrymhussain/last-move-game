@@ -27,6 +27,62 @@ main {
   margin: 30px auto;
 }
 
+
+/* ---------- Start Screen ---------- */
+
+#start-screen {
+  max-width: 500px;
+
+  margin: 50px auto;
+
+  padding: 30px;
+
+  background-color: white;
+
+  border: 2px solid #b8e3f2;
+
+  border-radius: 16px;
+}
+
+.game-logo {
+  width: 100%;
+
+  max-width: 320px;
+
+  height: auto;
+
+  margin-bottom: 20px;
+}
+
+.instructions {
+  margin: 20px auto;
+
+  padding: 15px 20px;
+
+  background-color: #eefaff;
+
+  border-radius: 10px;
+
+  line-height: 1.5;
+}
+
+.instructions h2 {
+  margin-top: 0;
+
+  color: #164b69;
+}
+
+.instructions p {
+  margin: 10px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* ---------- Game ---------- */
+
 .game-header {
   margin-bottom: 15px;
 }
@@ -120,6 +176,9 @@ h2 {
   font-size: 25px;
 }
 
+
+/* ---------- Frozen Theme ---------- */
+
 body.frozen {
   background-color: #dff6ff;
 
@@ -141,6 +200,7 @@ body.frozen .player {
 body.frozen .goal {
   background-color: #d7f0d7;
 }
+
 
 #message {
   min-height: 25px;
@@ -220,6 +280,9 @@ button:disabled {
 
   cursor: default;
 }
+
+
+/* ---------- Christmas Theme ---------- */
 
 body.christmas {
   background-color: #cfe0d3;
@@ -312,7 +375,6 @@ body.christmas .presenter-trap::after {
     rgba(168, 50, 59, 0.18);
 }
 
-
 .grinch-img {
   position: absolute;
 
@@ -365,6 +427,9 @@ body.christmas #restart-btn {
 
   color: #175c3a;
 }
+
+
+/* ---------- Midnight Theme ---------- */
 
 body.midnight {
   background-color: #c7d6ec;
@@ -460,7 +525,6 @@ body.midnight .presenter-fake-goal::after {
     rgba(41, 72, 109, 0.18);
 }
 
-
 body.midnight #message {
   color: #35516f;
 }
@@ -485,10 +549,23 @@ body.midnight #restart-btn {
   border: 1px solid #9db5cf;
 }
 
+
+/* ---------- Mobile ---------- */
+
 @media (max-width: 500px) {
 
   main {
     width: 95%;
+  }
+
+  #start-screen {
+    margin: 25px auto;
+
+    padding: 20px;
+  }
+
+  .game-logo {
+    max-width: 260px;
   }
 
   h1 {
